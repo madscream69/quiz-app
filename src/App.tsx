@@ -4,6 +4,7 @@ import NotFound from "./pages/NotFound/NotFound.tsx";
 import Layout from "./components/Layout/Layout.tsx";
 import About from "./pages/About/About.tsx";
 import Category from "./pages/Category/Category.tsx";
+import CreateQuiz from "./pages/CreateQuiz/CreateQuiz.tsx";
 
 //import styles from './App.module.scss'
 
@@ -16,6 +17,7 @@ const router = createBrowserRouter([
       { index: true, element: <Home /> },
       { path: "about", element: <About /> },
       { path: "category/:categoryId", element: <Category /> },
+      {path: "create_quiz", element: <CreateQuiz /> } ,
       /*{ path: "product/:productId", element: <ProductDetails /> },*/
       { path: "*", element: <NotFound /> },
     ],

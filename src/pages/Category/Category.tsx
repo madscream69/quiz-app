@@ -1,41 +1,48 @@
-import {useLocation, useParams} from "react-router-dom";
-import {useEffect, useState} from "react";
+import {useParams} from "react-router-dom";
+import {useCallback, useEffect, useMemo, useRef} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import type {RootState} from "../../store/store.ts";
+import {fetchQuestionData, resetQuestions} from "../../store/questionsSlice.ts";
 
-function Category() {
-    const [token, setToken] = useState<string>('');
+interface Question{
+    category: string,
+    correct_answer: string,
+    difficulty: string,
+    incorrect_answers: string[];
+    question: string,
+    type: string
 
-    const { categoryId } = useParams();
-    const location = useLocation();
-    console.log(location);
-    useEffect(() => {
-        async function getToken(){
-            try{
-                const res = await fetch('https://opentdb.com/api_token.php?command=request');
-                const TOKEN = await  res.json();
-                setToken(TOKEN.token);
-            }
-            catch (e) {
-                console.error(e)
-            }
-
-        }
-        getToken();
-        // https://opentdb.com/api_count.php?category=CATEGORY_ID_HERE
-        async  function getCategory(){
-            try{
-                const res = await fetch(`https://opentdb.com/api_count.php?category=${categoryId}`);
-                const category = await  res.json();
-                console.log(category)
-            }
-            catch (e) {
-                console.error(e)
-            }
-        }
-        getCategory()
-    }, []);
-    return (
-        <div>{categoryId}</div>
-    );
 }
 
+function Category() {
+    const { categoryId } = useParams<{ categoryId: string }>();
+    const dispatch = useDispatch();
+    const { loading, error, results } = useSelector((state: RootState) => state.questions);
+    const firstQuestionRef = useRef<HTMLDivElement>(null);
+    useEffect(() => {
+        if (categoryId) {
+            dispatch(fetchQuestionData(categoryId));
+        }
+        // Очищаем вопросы при размонтировании (опционально)
+        return () => {
+            dispatch(resetQuestions());
+        };
+    }, [dispatch, categoryId]);
+
+
+    if (loading) {
+        return <div >Loading questions...</div>;
+    }
+
+    if (error) {
+        return <div >Error: {error}</div>;
+    }
+    return (
+        <div >
+            <h1>Questions for Category {categoryId}</h1>
+            <button onClick={()=>console.log(results)}>suck my dick</button>
+        </div>
+    );
+}
+// NADO FIXIT
 export default Category;
