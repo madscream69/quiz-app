@@ -13,6 +13,11 @@ interface Question{
     type: string
 
 }
+const decodeHTML = (html: string) => {
+    const txt = document.createElement("textarea");
+    txt.innerHTML = html;
+    return txt.value;
+};
 
 function Category() {
     const { categoryId } = useParams<{ categoryId: string }>();
@@ -39,7 +44,23 @@ function Category() {
     }
     return (
         <div >
-            <h1>Questions for Category {categoryId}</h1>
+            <h1>Questions for Category "{results[0].category}"</h1>
+            <ul>
+                {results.map((question, index)=>{
+                    return <li key={index}>
+                        <h3>{`${index+1}) ${decodeHTML(question.question)}`}</h3>
+                        <ul>
+                            {[...question.incorrect_answers, question.correct_answer].sort(() => Math.random() - 0.5).map((quest, index)=>{
+                                return <li key={`${index}${quest}`}>
+                                    {decodeHTML(quest)}
+                                </li>
+                            })}
+                        </ul>
+
+                    </li>
+                })}
+            </ul>
+
             <button onClick={()=>console.log(results)}>suck my dick</button>
         </div>
     );
