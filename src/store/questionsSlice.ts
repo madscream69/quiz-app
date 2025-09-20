@@ -1,4 +1,5 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
+import type {RootState} from "./store.ts";
 interface Question{
     category: string,
     correct_answer: string,
@@ -22,7 +23,12 @@ const initialState:QuestionsState = {
     results: [],
     currentCategoryId: null,
 }
-export const fetchQuestionData = createAsyncThunk('questions/fetchQuestions', async (categoryId: string, {rejectWithValue})=>{
+export const fetchQuestionData = createAsyncThunk('questions/fetchQuestions', async (categoryId: string, {getState,rejectWithValue})=>{
+    const state = getState() as RootState;
+    // Проверяем, есть ли данные для текущего categoryId
+    if (state.questions.currentCategoryId === categoryId && state.questions.results.length > 0) {
+        return { results: state.questions.results, categoryId }; // Возвращаем существующие данные
+    }
     try {
         const res = await fetch(
             `https://opentdb.com/api.php?amount=10&type=multiple&category=${categoryId}`

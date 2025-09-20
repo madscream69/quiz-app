@@ -1,0 +1,43 @@
+.main{
+  display: flex;
+  gap: 30px;
+  flex-direction: column;
+}
+.headerText{
+  font-size: 48px;
+  font-weight: 600;
+  line-height: 54px;
+  padding: 0 3rem;
+}
+.grid{
+  width: 100%;
+  padding: 0 3rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+.question{
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+}
+.questionText{
+  font-size: 24px;
+  font-weight: 500;
+}
+.answerSection{
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.answerLabel{
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  cursor: pointer;
+}
+.answerText{
+  font-size: 18px;
+  font-weight: 500;
+}

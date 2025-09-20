@@ -11,9 +11,9 @@ html{
 *, *::after, *::before{
   box-sizing: inherit;
 }
-// ul[class], li[class]{
-//     padding: 0;
-// }
+ ul[class], li[class]{
+     padding: 0;
+ }
 body,h1,h2,h3,h4,h5,h6,p,ul,li,figure,figcaption,blockquote,dl,dd{
   margin: 0;
   font-size: inherit;
@@ -39,9 +39,6 @@ body {
   // overflow-x: hidden;
 }
 body {
-
-
-
   font-family: 'Roboto', sans-serif;
   font-size: 16px;
   line-height: 27px;
