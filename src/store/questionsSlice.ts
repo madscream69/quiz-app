@@ -23,6 +23,7 @@ const initialState:QuestionsState = {
     results: [],
     currentCategoryId: null,
 }
+
 export const fetchQuestionData = createAsyncThunk('questions/fetchQuestions', async (categoryId: string, {getState,rejectWithValue})=>{
     const state = getState() as RootState;
     // Проверяем, есть ли данные для текущего categoryId

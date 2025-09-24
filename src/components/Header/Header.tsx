@@ -1,13 +1,16 @@
 import {NavLink} from "react-router-dom";
-
+import styles from './Header.module.scss'
 
 function Header() {
     return (
-        <header>
-            <h1>Header</h1>
-            <NavLink to={"/"}>Home</NavLink>
-            <NavLink to={"/about"}>About</NavLink>
-            <NavLink to={"/create_quiz"}>Create Quiz</NavLink>
+        <header className={styles.header}>
+            <h1 className={styles.headerTitle}>Quiz App</h1>
+            <nav className={styles.menu}>
+                <NavLink className={styles.menuLink} to={"/"}>Home</NavLink>
+                <NavLink className={styles.menuLink} to={"/about"}>About</NavLink>
+                <NavLink className={styles.menuLink} to={"/create_quiz"}>Create Quiz</NavLink>
+            </nav>
+
         </header>
     );
 }

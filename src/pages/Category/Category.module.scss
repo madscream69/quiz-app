@@ -1,17 +1,33 @@
+$black: #191919;
+$light-black: #1c1c1c;
+$white: #f0f3f5;
+$pink: #c90279;
+$green: #26c485;
+$light-grey: #CAC4CE;
+
+.noScroll {
+  overflow: hidden;
+}
+
 .main{
+
+  padding: 0 300px;
+
   display: flex;
   gap: 30px;
   flex-direction: column;
 }
 .headerText{
+  text-align: center;
   font-size: 48px;
   font-weight: 600;
   line-height: 54px;
   padding: 0 3rem;
+
+  margin: 20px 0;
 }
 .grid{
   width: 100%;
-  padding: 0 3rem;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 40px;
@@ -32,12 +48,118 @@
   gap: 16px;
 }
 .answerLabel{
-  display: flex;
-  flex-direction: row;
-  gap: 15px;
+  //display: flex;
+  //flex-direction: row;
+  //gap: 15px;
   cursor: pointer;
 }
 .answerText{
   font-size: 18px;
   font-weight: 500;
 }
+
+.answerLabel{
+  display: block;
+  cursor: pointer;
+  user-select:none;
+  text-align: left;
+  &+.answerLabel{
+    margin-top: 12px;
+  }
+  input{
+    display: none;
+    &+span{
+      display: inline-block;
+      position: relative;
+      padding-left: 30px;
+      &:before{
+        content: '';
+        display: block;
+        position: absolute;
+        top: 5px;
+        left: 0px;
+        border-radius: 50%;
+        margin-right: 5px;
+        width: 16px;
+        height: 16px;
+        border: 1px solid #ccc;
+        background: #fff;
+      }
+      &:after{
+        content: '';
+        display: block;
+        width: 10px;
+        height: 10px;
+        background: #222;
+        position: absolute;
+        border-radius: 50%;
+        top: 8px;
+        left: 3px;
+        opacity: 0;
+        transform: scale(0,0);
+        transition: all .2s cubic-bezier(0.64, 0.57, 0.67, 1.53);
+      }
+    }
+    &:checked+span:after{
+      opacity: 1;
+      transform: scale(1,1);
+    }
+  }
+}
+
+.popup {
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: fixed;
+  //min-width: 100vw;
+  width: 100%;
+  height: 100%;
+
+
+
+  background-color: rgba($color: #000000, $alpha: 0.7);
+  &Wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    flex-direction: column;
+    padding: 20px 40px;
+    background-color: $black;
+    border: 1px solid $white;
+    border-radius: 10px;
+
+    -webkit-box-shadow: 0px 0px 16px 5px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 16px 5px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 16px 5px rgba(0, 0, 0, 0.75);
+  }
+  &Header {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  &Btn {
+    background-color: $light-black;
+    color: $white;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    border: 1px solid transparent;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.5s ease;
+    -webkit-box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.75);
+
+    &:hover {
+      border: 1px solid $green;
+    }
+  }
+}
+//TODO: fix popup position

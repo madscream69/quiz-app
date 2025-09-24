@@ -1,0 +1,41 @@
+$black: #191919;
+$light-black: #1c1c1c;
+$white: #f0f3f5;
+$pink: #c90279;
+$green: #26c485;
+$light-grey: #CAC4CE;
+.header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 20px 300px;
+
+  z-index: 1;
+
+  &Title{
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 30px;
+  }
+}
+.menu{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+
+  &Link{
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 16px;
+    color: $white;
+
+    transition: all .5s ease;
+
+    &:hover{
+      color: $green;
+      transition: all .5s ease;
+    }
+  }
+}
