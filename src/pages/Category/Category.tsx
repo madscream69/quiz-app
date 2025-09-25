@@ -5,6 +5,7 @@ import type {RootState} from "../../store/store.ts";
 import {fetchQuestionData, resetQuestions} from "../../store/questionsSlice.ts";
 
 import styles from './Category.module.scss'
+import Button from "../../components/Button/Button.tsx";
 
 interface Question{
     category: string,
@@ -154,8 +155,7 @@ function Category() {
                         </div>
                     })}
                 </div>
-
-                <button onClick={()=>checkAnswers()}>check my answers</button>
+                <Button onClick={()=>checkAnswers()} text='check my answers'></Button>
             </div>
         </>
 

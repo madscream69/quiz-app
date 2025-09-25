@@ -12,6 +12,15 @@ $light-grey: #CAC4CE;
   padding: 20px 300px;
 
   z-index: 1;
+  position: fixed;
+  top: 0;
+  width: 100%;
+
+  background-color: $black;
+
+  box-shadow: 0px 4px 15px 1px rgba(0,0,0,0.75);
+  -webkit-box-shadow: 0px 4px 15px 1px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 4px 15px 1px rgba(0,0,0,0.75);
 
   &Title{
     font-size: 28px;
