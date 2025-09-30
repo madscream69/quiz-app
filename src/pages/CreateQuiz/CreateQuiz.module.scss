@@ -1,0 +1,92 @@
+@use '../../var' as *;
+.main{
+  padding: 0 300px;
+
+  display: flex;
+  gap: 30px;
+  flex-direction: column;
+}
+.title{
+  text-align: center;
+  font-size: 48px;
+  font-weight: 600;
+  line-height: 54px;
+  padding: 0 3rem;
+
+  margin: 20px 0;
+}
+.createQuiz{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 50px;
+}
+.theme, .question, .correct, .incorrect, .amount{
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  &Label{
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 20px;
+  }
+  &Input{
+    color: $white;
+    font-size: 18px;
+    padding: 10px 25px;
+    border-radius: 20px;
+    border: 1px solid rgba($white, 0.5);
+    transition: all 0.5s ease-out;
+    background-color: $light-black;
+
+    -webkit-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 1);
+    -moz-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 1);
+    box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 1);
+
+    &:focus {
+      outline: none;
+      border: 1px solid $green;
+    }
+    &::placeholder {
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 18px;
+      color: rgba($white, 0.5);
+    }
+  }
+}
+.amount{
+  //todo: styled input+btns for input
+  width: fit-content;
+  justify-content: space-between;
+  &Label{
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 20px;
+  }
+  &Input{
+    width: 50px;
+    padding: 10px 18px;
+    border-radius: 50%;
+
+  }
+  &Btn{
+    background-color: $light-black;
+    color: $white;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    border: 1px solid rgba($white, 0.5);
+    padding: 10px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.5s ease;
+    -webkit-box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.75);
+
+    &:hover {
+      border: 1px solid $green;
+    }
+  }
+}
